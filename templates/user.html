@@ -4,13 +4,13 @@
 <head><style>
 body {
   background-color: #E8DCD9;
-  font-family: cursive;
+  font-family: sans-serif;
 }</style></head>
 
 <center><h1 style="color:red">Welcome back {{current_user.username}}!</h1>
   <h2>List of trips you are currently planning: 
 {% for post in posts %}
-<ul>&#128205;{{ post.city }} - {{ post.description }}</ul>
+<ul>&#128205;{{ post.city }}, {{ post.country }} - {{ post.description }}</ul>
 {% endfor %}
     </h2>
     <h1 class="blue">Plan a trip to this city:</h1>
