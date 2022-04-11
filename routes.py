@@ -1,10 +1,15 @@
-from app import app
+from app import app, db, login_manager
 from flask import request, render_template, flash, redirect,url_for
 from models import User, Post
 from forms import RegistrationForm,LoginForm, DestinationForm
 from werkzeug.urls import url_parse
 
-  
+
+# helper function -- loads user
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
   #check if current_user logged in, if so redirect to a page that makes sense
@@ -18,8 +23,8 @@ def register():
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
-        #db.session.add(user)
-        #db.session.commit()
+        db.session.add(user)
+        db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
