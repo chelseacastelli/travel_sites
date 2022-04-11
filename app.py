@@ -6,7 +6,7 @@ from flask_login import LoginManager
 # Create/setup Flask app and database
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'pepperoni-pizza'
-app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DATABASE_URL') or 'sqlite:///my_database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DATABASE_URL').replace("postgres://", "postgresql://", 1) or 'sqlite:///my_database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
