@@ -15,7 +15,7 @@
 	<h2 style="color:red">Where you and your friends  share travel plans.</h2>
 	<h3 >Travelers on Triplanned are going to:</h3>
 	{% for post in posts %}
-<ul >&#128205;{{ post.city }} - {{ post.description }}</ul>
+<ul >&#128205;<em>{{ post.city }}</em>, <strong>{{ post.country }}</strong> - {{ post.description }}</ul>
 {% endfor %}
 </center>
 
