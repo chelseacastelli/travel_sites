@@ -2,6 +2,14 @@
 
 {% block content %}
 
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+			<p style="font-weight: bold;">{{message}}</p>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+
 <center>
 	<h1 class="blue">TriPlanned</h1>
 	<h2 style="color:red">Where you and your friends  share travel plans.</h2>
